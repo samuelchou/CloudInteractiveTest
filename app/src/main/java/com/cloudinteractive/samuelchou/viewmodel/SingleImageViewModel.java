@@ -4,15 +4,15 @@ import android.content.Context;
 
 import androidx.databinding.ObservableField;
 
-import com.cloudinteractive.samuelchou.data.Gallery;
+import com.cloudinteractive.samuelchou.data.ImageGallery;
 
 public class SingleImageViewModel {
 
-    private Gallery gallery;
+    private ImageGallery gallery;
 
     public final ObservableField<String> title = new ObservableField<>();
 
     public SingleImageViewModel(Context context) {
-        gallery = new Gallery(context);
+        gallery = new ImageGallery(activity);
     }
 }

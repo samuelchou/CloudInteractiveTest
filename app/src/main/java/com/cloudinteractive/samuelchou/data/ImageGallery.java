@@ -9,13 +9,13 @@ import com.android.volley.VolleyError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Gallery {
+public class ImageGallery {
     private static final String BASE_URL = "https://jsonplaceholder.typicode.com/photos";
     private static final String BASE_REQUEST_TAG = "BaseRequestQueue";
 
     private InternetSourceAgent internetSourceAgent;
 
-    public Gallery(Context context) {
+    public ImageGallery(Context context) {
         internetSourceAgent = new InternetSourceAgent(context.getApplicationContext(), BASE_REQUEST_TAG);
     }
 
