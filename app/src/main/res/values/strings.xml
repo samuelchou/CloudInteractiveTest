@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">samuelchou</string>
+    <string name="developer_name">Samuel Chou</string>
+    <string name="action_request_api">Request API</string>
 </resources>
