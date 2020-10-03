@@ -2,4 +2,6 @@
     <string name="app_name">samuelchou</string>
     <string name="developer_name">Samuel Chou</string>
     <string name="action_request_api">Request API</string>
+
+    <string name="msg_fail_to_load">載入失敗:(</string>
 </resources>
