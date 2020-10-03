@@ -10,5 +10,17 @@ public class Gallery {
 
         public SingleImage() {
         }
+
+        public int getId() {
+            return id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getThumbnailUrl() {
+            return thumbnailUrl;
+        }
     }
 }

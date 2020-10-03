@@ -1,5 +1,6 @@
 package com.cloudinteractive.samuelchou.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -19,7 +20,6 @@ public class Activity2 extends AppCompatActivity {
     // COMPLETED: 2020/10/3 id,title: ⽂字center
     // COMPLETED: 2020/10/3 thumbnailUrl: 以ImageView呈現於背景中
     // COMPLETED: 2020/10/3 每⼀行放四個格⼦
-    // TODO: 2020/10/3 點擊任一格進入第三個頁面
 
     private final List<Gallery.SingleImage> itemList = new ArrayList<>();
 
@@ -36,6 +36,17 @@ public class Activity2 extends AppCompatActivity {
             @Override
             public void bindData(View itemView, int position, Gallery.SingleImage data) {
                 // TODO: 2020/10/3 把API內容呈現： id, title, thumbnailUrl (image)
+                // COMPLETED: 2020/10/3 點擊任一格進入第三個頁面
+                final int id = data.getId();
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(Activity2.this, Activity3.class);
+                        intent.putExtra(Activity3.ARG_ID, id);
+                        startActivity(intent);
+                    }
+                });
+
             }
         };
 
