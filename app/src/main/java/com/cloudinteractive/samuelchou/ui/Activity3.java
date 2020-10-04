@@ -2,7 +2,6 @@ package com.cloudinteractive.samuelchou.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -39,14 +38,6 @@ public class Activity3 extends AppCompatActivity {
         singleImageViewModel = new SingleImageViewModel(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_3);
         binding.setViewModel(singleImageViewModel);
-
-        this.findViewById(android.R.id.content).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // COMPLETED: 2020/10/3 點擊畫面任意地方返回上一頁
-                finish();
-            }
-        });
 
         singleImageViewModel.RequestSingleImage(17);
     }

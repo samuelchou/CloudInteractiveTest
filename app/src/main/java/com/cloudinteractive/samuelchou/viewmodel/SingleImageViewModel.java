@@ -12,12 +12,14 @@ public class SingleImageViewModel {
 
     private ImageGallery gallery;
     private String tag;
+    private Activity activity;
 
     public final ObservableField<String> title = new ObservableField<>();
     public final ObservableBoolean isLoading = new ObservableBoolean(false);
 
     public SingleImageViewModel(Activity activity) {
         gallery = new ImageGallery(activity);
+        this.activity = activity;
         tag = activity.getLocalClassName();
     }
 
@@ -37,5 +39,9 @@ public class SingleImageViewModel {
                 isLoading.set(false);
             }
         });
+    }
+
+    public void FinishActivity() {
+        activity.finish();
     }
 }
