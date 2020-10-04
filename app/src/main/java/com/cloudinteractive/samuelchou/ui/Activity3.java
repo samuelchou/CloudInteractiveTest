@@ -6,8 +6,11 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.cloudinteractive.samuelchou.R;
+import com.cloudinteractive.samuelchou.databinding.Activity3Binding;
+import com.cloudinteractive.samuelchou.viewmodel.SingleImageViewModel;
 
 public class Activity3 extends AppCompatActivity {
     // TODO: 2020/10/3 呈現點擊當格的id, title, thumbnailUrl 所對應的圖片
@@ -17,6 +20,8 @@ public class Activity3 extends AppCompatActivity {
     public static final String ARG_ID = "Arg_ID";
 
     private int id;
+    private SingleImageViewModel singleImageViewModel;
+    private Activity3Binding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +36,10 @@ public class Activity3 extends AppCompatActivity {
         }
         id = intent.getIntExtra(ARG_ID, -1);
 
-        setContentView(R.layout.activity_3);
+        singleImageViewModel = new SingleImageViewModel(this);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_3);
+        binding.setViewModel(singleImageViewModel);
+
         this.findViewById(android.R.id.content).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,5 +47,7 @@ public class Activity3 extends AppCompatActivity {
                 finish();
             }
         });
+
+        singleImageViewModel.RequestSingleImage(17);
     }
 }
