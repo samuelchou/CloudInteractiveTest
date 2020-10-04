@@ -12,9 +12,10 @@ import com.cloudinteractive.samuelchou.databinding.Activity3Binding;
 import com.cloudinteractive.samuelchou.viewmodel.SingleImageViewModel;
 
 public class Activity3 extends AppCompatActivity {
-    // TODO: 2020/10/3 呈現點擊當格的id, title, thumbnailUrl 所對應的圖片
-    // TODO: 2020/10/3 id, title: 文字置中呈現
-    // TODO: 2020/10/3 thumbnailUrl: ImageView 呈現於背景中
+    // COMPLETED: 2020/10/3 呈現點擊當格的id, title,
+    // todo: 2020/10/3 thumbnailUrl 所對應的圖片
+    // COMPLETED: 2020/10/3 id, title: 文字置中呈現
+    // COMPLETED: 2020/10/3 thumbnailUrl: ImageView 呈現於背景中
 
     public static final String ARG_ID = "Arg_ID";
 
