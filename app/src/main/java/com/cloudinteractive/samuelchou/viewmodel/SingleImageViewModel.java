@@ -18,6 +18,7 @@ public class SingleImageViewModel {
     public final ObservableInt id = new ObservableInt(-1);
     public final ObservableField<String> title = new ObservableField<>();
     public final ObservableBoolean isLoading = new ObservableBoolean(false);
+    private ImageGallery.SingleImage image;
 
     public SingleImageViewModel(Activity activity) {
         gallery = new ImageGallery(activity);
@@ -33,7 +34,7 @@ public class SingleImageViewModel {
             public void onResponse(ImageGallery.SingleImage image) {
                 Log.i(tag, "onResponse: System response with " + image.getTitle());
                 isLoading.set(false);
-                title.set(image.getTitle());
+                SetSingleImage(image);
             }
 
             @Override
@@ -42,6 +43,11 @@ public class SingleImageViewModel {
                 isLoading.set(false);
             }
         });
+    }
+
+    public void SetSingleImage(ImageGallery.SingleImage image) {
+        this.image = image;
+        title.set(image.getTitle());
     }
 
     public void FinishActivity() {
