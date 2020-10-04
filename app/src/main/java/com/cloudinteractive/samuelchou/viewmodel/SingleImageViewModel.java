@@ -5,6 +5,7 @@ import android.util.Log;
 
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 
 import com.cloudinteractive.samuelchou.data.ImageGallery;
 
@@ -14,6 +15,7 @@ public class SingleImageViewModel {
     private String tag;
     private Activity activity;
 
+    public final ObservableInt id = new ObservableInt(-1);
     public final ObservableField<String> title = new ObservableField<>();
     public final ObservableBoolean isLoading = new ObservableBoolean(false);
 
@@ -24,6 +26,7 @@ public class SingleImageViewModel {
     }
 
     public void RequestSingleImage(int id) {
+        this.id.set(id);
         isLoading.set(true);
         gallery.RequestSingleImage(id, new ImageGallery.OnResponseListener() {
             @Override

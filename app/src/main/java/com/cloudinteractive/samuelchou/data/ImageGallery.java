@@ -61,6 +61,10 @@ public class ImageGallery {
         public SingleImage() {
         }
 
+        public SingleImage(int id) {
+            this.id = id;
+        }
+
         public SingleImage(JSONObject jsonObject) throws JSONException {
             id = jsonObject.getInt(ARG_ID);
             title = jsonObject.getString(ARG_TITLE);

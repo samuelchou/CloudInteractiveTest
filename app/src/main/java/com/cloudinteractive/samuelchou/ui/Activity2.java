@@ -53,7 +53,7 @@ public class Activity2 extends AppCompatActivity {
         // TODO: 2020/10/3 讀取API資料...？
         itemList.clear();
         for (int i = 0; i < 100; i++) {
-            itemList.add(new ImageGallery.SingleImage());
+            itemList.add(new ImageGallery.SingleImage(i));
         }
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);

@@ -34,11 +34,16 @@ public class Activity3 extends AppCompatActivity {
             return;
         }
         id = intent.getIntExtra(ARG_ID, -1);
+        if (id <= 0) {
+            Toast.makeText(this, R.string.msg_fail_to_load, Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
         singleImageViewModel = new SingleImageViewModel(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_3);
         binding.setViewModel(singleImageViewModel);
 
-        singleImageViewModel.RequestSingleImage(17);
+        singleImageViewModel.RequestSingleImage(id);
     }
 }
