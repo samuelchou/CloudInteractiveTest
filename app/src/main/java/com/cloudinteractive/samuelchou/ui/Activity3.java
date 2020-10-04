@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.cloudinteractive.samuelchou.R;
+import com.cloudinteractive.samuelchou.data.InternetSourceAgent;
 import com.cloudinteractive.samuelchou.databinding.Activity3Binding;
 import com.cloudinteractive.samuelchou.viewmodel.SingleImageViewModel;
 
@@ -46,5 +47,16 @@ public class Activity3 extends AppCompatActivity {
         binding.setViewModel(singleImageViewModel);
 
         singleImageViewModel.RequestSingleImage(id);
+
+        TestImageLoading();
+    }
+
+    private void TestImageLoading() {
+        InternetSourceAgent agent = new InternetSourceAgent(this, "TEST");
+        String url = "https://via.placeholder.com/150/9c184f";
+        agent.RequestImage(url,
+                binding.itemImage, R.drawable.ic_launcher_background, R.drawable.ic_launcher_foreground);
+
+
     }
 }
