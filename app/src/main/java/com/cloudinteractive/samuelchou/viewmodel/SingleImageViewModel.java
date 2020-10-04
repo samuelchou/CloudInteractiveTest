@@ -1,8 +1,11 @@
 package com.cloudinteractive.samuelchou.viewmodel;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.util.Log;
+import android.widget.ImageView;
 
+import androidx.databinding.BindingAdapter;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
@@ -18,7 +21,7 @@ public class SingleImageViewModel {
     public final ObservableInt id = new ObservableInt(-1);
     public final ObservableField<String> title = new ObservableField<>();
     public final ObservableBoolean isLoading = new ObservableBoolean(false);
-    private ImageGallery.SingleImage image;
+    public final ObservableField<Bitmap> thumb = new ObservableField<>();
 
     public SingleImageViewModel(Activity activity) {
         gallery = new ImageGallery(activity);
@@ -46,8 +49,29 @@ public class SingleImageViewModel {
     }
 
     public void SetSingleImage(ImageGallery.SingleImage image) {
-        this.image = image;
         title.set(image.getTitle());
+        RequestIntoDrawable(image);
+    }
+
+    private void RequestIntoDrawable(ImageGallery.SingleImage image) {
+        ImageGallery.OnBitmapResponseListener listener = new ImageGallery.OnBitmapResponseListener() {
+            @Override
+            public void onResponse(Bitmap bitmap) {
+                thumb.set(bitmap);
+            }
+
+            @Override
+            public void onFail() {
+            }
+        };
+//        gallery.RequestBitmap(image.getThumbnailUrl(), listener);
+        // TODO: 2020/10/4 暫時寫為這行，因為JSON Placeholder的圖片有問題......
+        gallery.RequestBitmap(ImageGallery.GetRandomDummyPicUrl(), listener);
+    }
+
+    @BindingAdapter("android:src")
+    public static void loadBitmapInto(ImageView imageView, Bitmap bitmap) {
+        imageView.setImageBitmap(bitmap);
     }
 
     public void FinishActivity() {

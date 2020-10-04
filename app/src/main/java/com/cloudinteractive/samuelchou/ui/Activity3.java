@@ -48,7 +48,7 @@ public class Activity3 extends AppCompatActivity {
 
         singleImageViewModel.RequestSingleImage(id);
 
-        TestImageLoading();
+        // TestImageLoading();
     }
 
     private void TestImageLoading() {
@@ -56,7 +56,5 @@ public class Activity3 extends AppCompatActivity {
         String url = "https://via.placeholder.com/150/9c184f";
         agent.RequestImage(url,
                 binding.itemImage, R.drawable.ic_launcher_background, R.drawable.ic_launcher_foreground);
-
-
     }
 }

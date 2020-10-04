@@ -1,6 +1,7 @@
 package com.cloudinteractive.samuelchou.data;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 
 import androidx.annotation.NonNull;
 
@@ -41,8 +42,37 @@ public class ImageGallery {
         });
     }
 
+    private static final String[] DUMMY_PIC_URL = new String[]{
+            "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-800x825.jpg"
+    };
+
+    public static String GetRandomDummyPicUrl() {
+        return DUMMY_PIC_URL[0];
+//        return DUMMY_PIC_URL[new Random().nextInt(DUMMY_PIC_URL.length)];
+    }
+
+    public void RequestBitmap(String url, final OnBitmapResponseListener listener) {
+        internetSourceAgent.RequestImage(url, new InternetSourceAgent.ResponseListener<Bitmap>() {
+            @Override
+            public void OnResponseSuccess(Bitmap object) {
+                listener.onResponse(object);
+            }
+
+            @Override
+            public void OnResponseError(VolleyError error) {
+                listener.onFail();
+            }
+        });
+    }
+
     public interface OnResponseListener {
         void onResponse(SingleImage image);
+
+        void onFail();
+    }
+
+    public interface OnBitmapResponseListener {
+        void onResponse(Bitmap bitmap);
 
         void onFail();
     }
