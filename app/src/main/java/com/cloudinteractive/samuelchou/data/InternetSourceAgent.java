@@ -353,7 +353,7 @@ public final class InternetSourceAgent {
     private static HashMap<String, String> jsonToMap(JSONObject json) throws JSONException {
         HashMap<String, String> retMap = new HashMap<>();
 
-        if (json != JSONObject.NULL) {
+        if (json != null && json != JSONObject.NULL) {
             retMap = toMap(json);
         }
         return retMap;
